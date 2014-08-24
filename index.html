@@ -1,56 +1,35 @@
+<!-- 
+    La consulta se hace en el input search
+    los resultados se devuelven por console.log
+ -->
+
 <!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Backbone</title>
     
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="js/underscore.js"></script>
-    <script src="js/backbone.js"></script>
-    <script>
-    window.SearchView = Backbone.View.extend({
-        events:{
-            "click button":"search", // el primero indica el evento, el segundo el elemento que actua ese evento, y por ultimo que funcion se ejecuta
-            "keypress input":"keyHandler" // al presionar una tecla dentro del input ejecuta la funcion keyHandler
-        },
-        initialize:function(config){
-            this.$el = config.$el; // Es el elemento del DOM que le estoy pasando a la funcion initialize
-        },
-        keyHandler:function(event){            
-            if(event.which === 13){ // si el evento es igual a la tecla enter, ejecutar la funcion search
-                this.search();
-            }
-        },
-        search:function(event){ // 
-            var value = this.$el.find('input').val();// guardo en value el valor del input contenido en este $el
-            console.log("El valor del input es:", value);
-        },
-        render:function(){}
-    });
-    
-    $(document).on("ready", function(){
-        
-        window.searchBox = new window.SearchView({ // utilizo la vista search en un nuevo elemento
-            $el : $("#search-box") // indico cual es el elemento donde se debe renderizar 
-        });
-        
-        window.templates = {}
-        templates.videoTemplate = _.template($("#videoTemplate").html());
-    });
-    </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/vendor/underscore.js"></script>
+    <script type="text/javascript" src="js/vendor/backbone.js"></script>
     
 </head>
 <body>
     
+    <!-- search -->
     <div id="search-box">
         <p>Buscar: <input type="text"><button>Buscar</button></p>
         <div id="videos"></div>        
     </div>
     
+    <!-- template -->
     <div id="favoritos"></div>
     <scrtip id="videoTemplate" type="text/template">
         
-    </scrtip>    
+    </scrtip> 
+
+    <!-- app/js -->
+    <script type="text/javascript" src="js/search.js"></script>
         
 </body>
 </html>
